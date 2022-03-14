@@ -1,6 +1,10 @@
 package com.ambrish.TB5.project1;
 
+import com.ambrish.TB5.project1.Entity.Appointment;
+import com.ambrish.TB5.project1.Entity.Article;
 import com.ambrish.TB5.project1.Entity.Book;
+import com.ambrish.TB5.project1.repository.AppointmentRepository;
+import com.ambrish.TB5.project1.repository.ArticleRepository;
 import com.ambrish.TB5.project1.repository.BookRepository;
 import com.ambrish.TB5.project1.repository.BookRepositoryImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +21,12 @@ public class Project1Application implements CommandLineRunner {
 
 	@Autowired
 	BookRepository bookRepository;
+
+	@Autowired
+	AppointmentRepository appointmentRepository;
+
+	@Autowired
+	ArticleRepository articleRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(Project1Application.class, args);
@@ -40,7 +50,8 @@ public class Project1Application implements CommandLineRunner {
 						"\n 4. Search By Book Name" +
 
 						" \n 5. findBookByBookIdGreaterThanAndBookIdLessThanEqualOrderByBookId" +
-						"\n 6. getMyBooksByBookIdRange HQL Way \n 7. getMyBooksByBookIdRangeNativeSQL");
+						"\n 6. getMyBooksByBookIdRange HQL Way \n 7. getMyBooksByBookIdRangeNativeSQL \n 8 List All Appointment " +
+						"\n 9. Article list");
 				menuChoice = scanner.nextInt();
 				scanner.nextLine();
 
@@ -142,6 +153,36 @@ public class Project1Application implements CommandLineRunner {
 
 						System.out.println("Book Id : "+ bookArrayList.get(i).getBookId());
 						System.out.println("Book Name : "+ bookArrayList.get(i).getBookName());
+					}
+
+				}
+				if (menuChoice == 8)
+				{
+
+					ArrayList<Appointment> appointmentList = (ArrayList<Appointment>)
+							appointmentRepository.findAll();
+					for(int i =0 ; i<appointmentList.size() ; i++){
+
+						System.out.println("appointment Subject "+ appointmentList.get(i).getSubject());
+						System.out.println("appointment Status  "+ appointmentList.get(i).getStatus());
+					}
+
+				}
+
+				if (menuChoice == 9)
+				{
+
+					ArrayList<Article> articleArrayList = (ArrayList<Article>)
+							articleRepository.findAll();
+					for(int i =0 ; i<articleArrayList.size() ; i++){
+
+						System.out.println("article Name "+ articleArrayList.get(i).getActName());
+						System.out.println("article author  "+ articleArrayList.get(i).getAuthor());
+						System.out.println("published "+ articleArrayList.get(i).getPublished());
+						System.out.println("topic  "+ articleArrayList.get(i).getTopic());
+						System.out.println("synopsis   "+ articleArrayList.get(i).getSynopsis());
+						System.out.println("-----------------------------------------------------------");
+
 					}
 
 				}
