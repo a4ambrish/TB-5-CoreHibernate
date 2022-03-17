@@ -2,7 +2,10 @@ package com.ambrish.TB5.project1.Entity;
 
 import lombok.Data;
 import org.hibernate.annotations.Check;
+<<<<<<< HEAD
+=======
 import org.hibernate.validator.constraints.Length;
+>>>>>>> 6db86474e6f969dae06bd9abc783d2c09c512a6b
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -24,7 +27,10 @@ public class BillM {
 
     @Column
     @NotNull(message = "This can not will null")
+<<<<<<< HEAD
+=======
             @Length(min = 2,max = 50,message = "invalid book name length")
+>>>>>>> 6db86474e6f969dae06bd9abc783d2c09c512a6b
     String type;
 
     @Column(name="cat")

@@ -17,7 +17,11 @@ public class Book {
 
     @Column (length = 3)
     @NotNull
+<<<<<<< HEAD
+    //@Length(min = 2,max = 50,message = "Invalid book name length")
+=======
     @Length(min = 2,max = 50,message = "Invalid book name length")
+>>>>>>> 6db86474e6f969dae06bd9abc783d2c09c512a6b
             //      @Min(value = 2,message = "Book name is too short")
         //    @Max(value = 50, message = "Book Name is too large")
     String bookName;
